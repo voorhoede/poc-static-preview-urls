@@ -1,0 +1,27 @@
+{
+  "name": "poc-static-preview-urls",
+  "version": "0.0.1",
+  "description": "PoC for static PR preview URLs on AWS S3",
+  "license": "MIT",
+  "homepage": "https://github.com/voorhoede/poc-static-preview-urls",
+  "author": {
+    "name": "De Voorhoede",
+    "url": "voorhoede.nl"
+  },
+  "repository": "voorhoede/poc-static-preview-urls",
+  "scripts": {
+    "prebuild": "rimraf dist && mkdir -p dist",
+    "build": "ncp src dist",
+    "predev": "npm run build",
+    "dev": "run-p dev:*",
+    "dev:watch": "chokidar 'src/**/*' --command 'npm run build'",
+    "dev:serve": "serve dist -l 3007"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "serve": "^13.0.4"
+  }
+}
