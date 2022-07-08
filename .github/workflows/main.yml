@@ -5,7 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run build
       - name: Create deploy preview
         uses: voorhoede/hackathon-pr-previews@main
         with:
           GITHUB_TOKEN: ${{ github.token }}
+          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+          DIST_FOLDER: dist
